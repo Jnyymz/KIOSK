@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>KIOSK</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://kit.fontawesome.com/a2e0bf0f6b.js" crossorigin="anonymous"></script> <!-- Font Awesome for icons -->
+  <style>
+    body {
+      background-color: #DBDBDB;
+    }
+    .text-primary {
+      color: #1D1D1D;
+    }
+    .bg-accent {
+      background-color: #E63946;
+    }
+    .bg-accent:hover {
+      background-color: #1D1D1D; 
+    }
+    .finalize-btn, #finalize {
+      background-color: #E63946; 
+    }
+    .finalize-btn:hover, #finalize:hover {
+      background-color: #1D1D1D;
+    }
+    .text-accent {
+      color: #E63946; 
+    }
+    .btn-active {
+      @apply bg-accent text-white;
+    }
+    .menu img{
+      width: 300px;
+      height: 200px;
+      object-fit: cover;
+    }
+  </style>
+  
+</head>
+<body class="font-sans min-h-screen p-5">
+
+  <!-- Header -->
+  <header class="flex flex-col md:flex-row items-center justify-between text-white bg-primary p-4 rounded-xl mb-6 gap-4">
+    <div class="flex items-center gap-3">
+      <h1 class="text-2xl font-bold text-[#1D1D1D]">SNACK<span class="text-[#E63946]">RUSH</span></h1>
+    </div>
+    <div class="relative w-full md:w-1/3">
+      <input type="text" id="search" placeholder="Search..." class="w-full px-4 py-2 rounded-full text-gray-800 focus:outline-none"/>
+      <i class="fas fa-search absolute right-4 top-2.5 text-gray-500"></i>
+    </div>
+  </header>
+
+  <div class="flex flex-col md:flex-row gap-6">
+
+    <!-- Menu Items -->
+    <div class="w-full md:w-2/3 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <!-- Menu Item Example -->
+      <div class="menu menu-item bg-white rounded-xl p-4 shadow-md text-center">
+        <img src="https://i.pinimg.com/736x/9c/8e/37/9c8e3701bf87d86d955299db4a74c102.jpg" alt="Spicy Chik' Popper Burger" class="mx-auto mb-2 rounded">
+        <h2 class="text-xl font-semibold mb-1">Spicy Chik' Popper Burger</h2>
+        <p class="mb-2 text-gray-600">₱120.00</p>
+        <label class="block mb-2">Qty:
+          <select class="quantity border rounded px-2 py-1">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+          </select>
+        </label>
+        <button class="add-to-cart bg-accent text-white px-4 py-2 rounded w-full" data-name="Spicy Chik' Popper Burger" data-price="120">Add to Cart</button>
+      </div>
+      <div class="menu menu-item bg-white rounded-xl p-4 shadow-md text-center">
+        <img src="https://i.pinimg.com/736x/a6/c9/71/a6c9718e4586dbdbde9ec929a6641f21.jpg" alt="Truffle Rush Fries" class="mx-auto mb-2 rounded">
+        <h2 class="text-xl font-semibold mb-1">Truffle Rush Fries</h2>
+        <p class="mb-2 text-gray-600">₱75.00</p>
+        <label class="block mb-2">Qty:
+          <select class="quantity border rounded px-2 py-1">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+          </select>
+        </label>
+        <button class="add-to-cart bg-accent text-white px-4 py-2 rounded w-full" data-name="Truffle Rush Fries" data-price="75">Add to Cart</button>
+      </div>
+      <div class="menu menu-item bg-white rounded-xl p-4 shadow-md text-center">
+        <img src="https://i.pinimg.com/736x/d7/6b/53/d76b53612c1bd8ede13685194303e914.jpg" alt="K-Pop Chicken Bites" class="mx-auto mb-2 rounded">
+        <h2 class="text-xl font-semibold mb-1">K-Pop Chicken Bites</h2>
+        <p class="mb-2 text-gray-600">₱150.00</p>
+        <label class="block mb-2">Qty:
+          <select class="quantity border rounded px-2 py-1">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+          </select>
+        </label>
+        <button class="add-to-cart bg-accent text-white px-4 py-2 rounded w-full" data-name="K-Pop Chicken Bites" data-price="150">Add to Cart</button>
+      </div>
+      <div class="menu menu-item bg-white rounded-xl p-4 shadow-md text-center">
+        <img src="https://i.pinimg.com/736x/18/d0/0d/18d00da75ec521ea5390904f90b41d08.jpg" alt="Rush Stack Burger" class="mx-auto mb-2 rounded">
+        <h2 class="text-xl font-semibold mb-1">Rush Stack Burger</h2>
+        <p class="mb-2 text-gray-600">₱150.00</p>
+        <label class="block mb-2">Qty:
+          <select class="quantity border rounded px-2 py-1">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+          </select>
+        </label>
+        <button class="add-to-cart bg-accent text-white px-4 py-2 rounded w-full" data-name="Rush Stack Burger" data-price="150">Add to Cart</button>
+      </div>
+      <div class="menu menu-item bg-white rounded-xl p-4 shadow-md text-center">
+        <img src="https://i.pinimg.com/736x/57/6e/4b/576e4b1f0985fd0b60a38d86890ea845.jpg" alt="ChiliCheese CrunchWrap" class="mx-auto mb-2 rounded">
+        <h2 class="text-xl font-semibold mb-1">ChiliCheese CrunchWrap</h2>
+        <p class="mb-2 text-gray-600">₱180.00</p>
+        <label class="block mb-2">Qty:
+          <select class="quantity border rounded px-2 py-1">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+          </select>
+        </label>
+        <button class="add-to-cart bg-accent text-white px-4 py-2 rounded w-full" data-name="ChiliCheese CrunchWrap" data-price="180">Add to Cart</button>
+      </div>
+      <div class="menu menu-item bg-white rounded-xl p-4 shadow-md text-center">
+        <img src="https://i.pinimg.com/736x/a4/29/dd/a429dd648e0e3f2efa92e1900f378b7b.jpg" alt="Tikka Tots" class="mx-auto mb-2 rounded">
+        <h2 class="text-xl font-semibold mb-1">Tikka Tots</h2>
+        <p class="mb-2 text-gray-600">₱150.00</p>
+        <label class="block mb-2">Qty:
+          <select class="quantity border rounded px-2 py-1">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+          </select>
+        </label>
+        <button class="add-to-cart bg-accent text-white px-4 py-2 rounded w-full" data-name="Tikka Tots" data-price="150">Add to Cart</button>
+      </div>
+      <div class="menu menu-item bg-white rounded-xl p-4 shadow-md text-center">
+        <img src="https://i.pinimg.com/736x/8b/bd/d5/8bbdd50eae3b7a6652484b9a3d27846a.jpg" alt="TropicTwist Slush" class="mx-auto mb-2 rounded">
+        <h2 class="text-xl font-semibold mb-1">TropicTwist Slush</h2>
+        <p class="mb-2 text-gray-600">₱80.00</p>
+        <label class="block mb-2">Qty:
+          <select class="quantity border rounded px-2 py-1">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+          </select>
+        </label>
+        <button class="add-to-cart bg-accent text-white px-4 py-2 rounded w-full" data-name="TropicTwist Slush" data-price="80">Add to Cart</button>
+      </div>
+      <div class="menu menu-item bg-white rounded-xl p-4 shadow-md text-center">
+        <img src="https://i.pinimg.com/736x/68/6c/1c/686c1c731d606d0ddc05a2955b1852c5.jpg" alt="CookieBomb Milkshake" class="mx-auto mb-2 rounded">
+        <h2 class="text-xl font-semibold mb-1">CookieBomb Milkshake</h2>
+        <p class="mb-2 text-gray-600">₱85.00</p>
+        <label class="block mb-2">Qty:
+          <select class="quantity border rounded px-2 py-1">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+          </select>
+        </label>
+        <button class="add-to-cart bg-accent text-white px-4 py-2 rounded w-full" data-name="CookieBomb Milkshake" data-price="85">Add to Cart</button>
+      </div>
+      <div class="menu menu-item bg-white rounded-xl p-4 shadow-md text-center">
+        <img src="https://i.pinimg.com/736x/9b/db/69/9bdb6911dfe4af756f5bd8e6d54de049.jpg" alt="Zesty Veggie Stack" class="mx-auto mb-2 rounded">
+        <h2 class="text-xl font-semibold mb-1">Zesty Veggie Stack</h2>
+        <p class="mb-2 text-gray-600">₱120.00</p>
+        <label class="block mb-2">Qty:
+          <select class="quantity border rounded px-2 py-1">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+          </select>
+        </label>
+        <button class="add-to-cart bg-accent text-white px-4 py-2 rounded w-full" data-name="Zesty Veggie Stack" data-price="120">Add to Cart</button>
+      </div>
+       
+       
+    </div>
+
+
+    <!-- Cart Sidebar -->
+    <div class="w-full md:w-1/3 bg-white p-5 rounded-xl shadow-md h-fit sticky top-5">
+      <h2 class="text-2xl font-semibold text-primary mb-4">🛒 Your Cart</h2>
+      <ul id="cart-list" class="mb-4 space-y-2"></ul>
+      <p class="text-xl font-bold mb-2">Total: ₱<span id="total">0</span></p>
+
+      <!-- Payment Buttons -->
+      <div class="mb-4">
+        <p class="text-sm font-medium mb-2">Payment Method:</p>
+        <div class="flex flex-col gap-4">
+          <button id="cash-btn" class="payment-btn border px-4 py-2 rounded w-full flex items-center justify-center gap-2 bg-[#1D1D1D] text-white hover:bg-[#E63946] hover:text-white transition">
+            <i class="fas fa-money-bill-wave"></i> Pay at the Counter
+          </button>
+          <button id="card-btn" class="payment-btn border px-4 py-2 rounded w-full flex items-center justify-center gap-2 bg-[#1D1D1D] text-white hover:bg-[#E63946] hover:text-white transition">
+            <i class="fas fa-credit-card"></i> Pay using Credit/Debit Card
+          </button>
+        </div>
+      </div>
+
+
+      <div id="card-payment" class="mb-2 hidden">
+        <label class="text-sm font-medium">Enter Card Payment:</label>
+        <input type="number" id="card-amount" class="w-full border px-2 py-1 mt-1 rounded" placeholder="Enter amount" />
+      </div>
+      <button id="finalize" class="bg-primary text-white px-6 py-3 rounded w-full mt-2">Finalize Order</button>
+    </div>
+  </div>
+
+  <!-- Receipt Modal -->
+  <div id="receipt" class="fixed hidden inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+    <div class="bg-white p-6 rounded-xl shadow-lg text-center w-96">
+      <h2 class="text-xl font-bold text-primary">SNACK <span class="text-accent">RUSH</span></h2>
+      <p class="mb-2">Receipt</p>
+      <p class="text-sm mb-4" id="date-time"></p>
+      <table class="w-full text-sm mb-4">
+        <thead>
+          <tr class="border-b">
+            <th class="text-left">Item</th>
+            <th>Qty</th>
+            <th class="text-right">Subtotal</th>
+          </tr>
+        </thead>
+        <tbody id="receipt-details" class="text-gray-700 text-left"></tbody>
+      </table>
+      <div id="summary" class="text-left text-sm mb-4"></div>
+      <p class="text-accent font-medium">Thank you for ordering!</p>
+      <button onclick="$('#receipt').hide()" class="bg-accent text-white px-4 py-2 rounded mt-3">Close</button>
+    </div>
+  </div>
+
+  <!-- Script -->
+  <script>
+    let cart = [];
+    let selectedPayment = 'cash';
+
+    function updateCart() {
+      const $list = $('#cart-list');
+      $list.empty();
+      let total = 0;
+
+      cart.forEach((item, index) => {
+        const itemTotal = item.price * item.quantity;
+        total += itemTotal;
+        $list.append(`
+          <li class="border rounded-lg p-3 flex justify-between items-center">
+            <div>
+              <p class="text-primary font-semibold">${item.name}</p>
+              <p class="text-accent">Qty: <input type='number' class='w-12 text-center border rounded qty-input' data-index='${index}' value='${item.quantity}' min='1'></p>
+            </div>
+            <div class="text-right">
+              <p class="text-accent font-semibold">₱${itemTotal.toFixed(1)}</p>
+              <button class="text-red-600 text-xs mt-1 remove-item" data-index="${index}">Remove</button>
+            </div>
+          </li>
+        `);
+      });
+
+      $('#total').text(total.toFixed(1));
+    }
+
+    $(document).on('click', '.add-to-cart', function () {
+      const $card = $(this).closest('div');
+      const name = $(this).data('name');
+      const price = parseFloat($(this).data('price'));
+      const qty = parseInt($card.find('.quantity').val());
+
+      const existingItem = cart.find(item => item.name === name);
+      if (existingItem) {
+        existingItem.quantity += qty;
+      } else {
+        cart.push({ name, price, quantity: qty });
+      }
+
+      updateCart();
+    });
+
+    $(document).on('change', '.qty-input', function () {
+      const index = $(this).data('index');
+      const newQty = parseInt($(this).val());
+      if (newQty >= 1) {
+        cart[index].quantity = newQty;
+        updateCart();
+      }
+    });
+
+    $(document).on('click', '.remove-item', function () {
+      const index = $(this).data('index');
+      cart.splice(index, 1);
+      updateCart();
+    });
+
+    // Payment method buttons
+    $('#cash-btn').click(() => {
+      selectedPayment = 'cash';
+      $('#card-payment').addClass('hidden');
+      $('#cash-btn').addClass('bg-[#E63946] text-black');
+      $('#card-btn').removeClass('bg-[#E63946] text-black');
+    });
+
+    $('#card-btn').click(() => {
+      selectedPayment = 'card';
+      $('#card-payment').removeClass('hidden');
+      $('#card-btn').addClass('bg-[#E63946] text-black');
+      $('#cash-btn').removeClass('bg-[#E63946] text-black');
+    });
+
+    $('#finalize').click(function () {
+      if (cart.length === 0) return alert("Cart is empty!");
+      const now = new Date();
+      const formattedDate = now.toLocaleDateString('en-GB');
+      const formattedTime = now.toLocaleTimeString('en-GB');
+      $('#date-time').text(`${formattedDate}, ${formattedTime}`);
+
+      let total = 0;
+      let receiptDetails = '';
+
+      cart.forEach(item => {
+        const itemTotal = item.price * item.quantity;
+        total += itemTotal;
+        receiptDetails += `<tr><td>${item.name}</td><td class='text-center'>${item.quantity}</td><td class='text-right'>₱${itemTotal.toFixed(1)}</td></tr>`;
+      });
+
+      $('#receipt-details').html(receiptDetails);
+
+      if (selectedPayment === 'card') {
+        const paid = parseFloat($('#card-amount').val());
+        if (isNaN(paid) || paid < total) return alert("Insufficient payment");
+        const change = paid - total;
+        $('#summary').html(`
+          <p><strong>Total:</strong> <span class='text-accent'>₱${total.toFixed(1)}<span class='text-accent'><span class='text-accent'></p>
+          <p><strong>Cash:</strong> <span class='text-accent'>₱${paid.toFixed(2)}<span class='text-accent'></p>
+          <p><strong>Change:</strong> <span class='text-accent'>₱${change.toFixed(2)}</span></p>
+        `);
+      } else {
+        $('#summary').html(`<p><strong>Total:</strong> <span class='text-accent'>₱${total.toFixed(1)}</span></p>`);
+      }
+
+      $('#receipt').show();
+      cart = [];
+      updateCart();
+      $('#card-amount').val('');
+    });
+
+    $(document).ready(function() {
+    $("#search").on("input", function() {
+      const searchText = $(this).val().toLowerCase();
+      $(".menu-item").each(function() {
+        const itemName = $(this).find("h2").text().toLowerCase();
+        $(this).toggle(itemName.includes(searchText));
+      });
+    });
+  });
+  </script>
+</body>
+</html>
